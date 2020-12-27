@@ -21,6 +21,7 @@ A competetiton on kaggle, the goal is to detect the wheat heads and draw boundin
 ## result
 - get 0.6583 on kaggle public score.
 - image
+
  ![image](https://github.com/shenhsinyu/final-project/blob/main/image.png)
 
 ## reference
