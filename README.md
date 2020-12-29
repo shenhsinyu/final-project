@@ -9,7 +9,7 @@ A competetiton on kaggle, the goal is to detect the wheat heads and draw boundin
 
 ## dataset
 - join the competition and download the dataset.
-- can use `data-augmentation.ipynb` to make augmentation data.
+- can use `data-augmentation.ipynb` to generate augmentation data.
 
 ## training
 - run `train.py` to train your model for no augmentatino data.
