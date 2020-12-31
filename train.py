@@ -18,10 +18,11 @@ from matplotlib import pyplot as plt
 BASE_DIR = '~/Desktop/final'
 
 train_df = pd.read_csv(os.path.join(BASE_DIR, 'train.csv'))
-train_df[['x_min','y_min', 'width', 'height']] = pd.DataFrame([ast.literal_eval(x) for x in train_df.bbox.tolist()], index= train_df.index)
+train_df[['x_min', 'y_min', 'width', 'height']] = pd.DataFrame([ast.literal_eval(x) for x in train_df.bbox.tolist()], index = train_df.index)
 train_df = train_df[['image_id', 'bbox', 'source', 'x_min', 'y_min', 'width', 'height']]
 train_df['area'] = train_df['width'] * train_df['height']
 train_df = train_df.drop(['bbox'], axis=1)
+
 
 class WheatDataset(Dataset):
     
@@ -80,6 +81,7 @@ class WheatDataset(Dataset):
 
         return image, target
 
+
 def get_model(pre_trained=True):
     # load a model pre-trained pre-trained on COCO
     model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=pre_trained)
@@ -96,6 +98,7 @@ def get_model(pre_trained=True):
 
     return model
 
+
 def get_train_transforms():
     return albumentations.Compose([
         albumentations.ShiftScaleRotate(shift_limit=0.0625,
@@ -105,6 +108,7 @@ def get_train_transforms():
         albumentations.HorizontalFlip(p=0.5),
         albumentations.VerticalFlip(p=0.5)
     ])
+
 
 from engine import train_one_epoch, evaluate
 import utils
